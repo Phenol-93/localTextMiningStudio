@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>知识图谱</title>
+    <link rel="stylesheet" href="graph.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="toolbar">
+        <input id="searchInput" type="search" placeholder="搜索节点" />
+        <select id="relationFilter">
+          <option value="">全部关系</option>
+        </select>
+        <select id="typeFilter">
+          <option value="">全部实体类型</option>
+        </select>
+        <select id="statusFilter">
+          <option value="">全部状态</option>
+        </select>
+        <label class="inline-control">
+          Top N
+          <input id="topNInput" type="number" min="1" max="500" value="50" />
+        </label>
+        <select id="hopMode">
+          <option value="top">Top N</option>
+          <option value="one">一跳邻居</option>
+          <option value="two">二跳邻居</option>
+        </select>
+        <button id="resetButton" type="button">重置</button>
+      </section>
+      <section class="content">
+        <div id="cy"></div>
+        <aside class="details">
+          <h1>详情</h1>
+          <div id="summary"></div>
+          <div id="detailsBody">点击节点或边查看详情。</div>
+        </aside>
+      </section>
+    </main>
+    <script src="cytoscape.min.js"></script>
+    <script src="graph.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "政策文本关系抽取",
+  "description": "适用于政策文件、通知、规划、办法中的主体、措施、对象和目标关系抽取。",
+  "system_prompt": "你是政策文本分析助手。请抽取政策主体、政策工具、适用对象、目标任务、约束条件之间的明确关系。",
+  "user_prompt_template": "请从以下政策文本中抽取关系三元组：\n\n{text}",
+  "allowed_entity_types": ["政策主体", "政策工具", "适用对象", "目标", "任务", "条件", "地区", "时间"],
+  "recommended_relations": ["发布", "适用于", "支持", "限制", "要求", "推动", "监管", "实施"],
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "triples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "subject": {"type": "string"},
+            "relation": {"type": "string"},
+            "object": {"type": "string"},
+            "evidence": {"type": "string"},
+            "policy_basis": {"type": "string"},
+            "confidence": {"type": "number"}
+          },
+          "required": ["subject", "relation", "object", "evidence"]
+        }
+      }
+    },
+    "required": ["triples"]
+  }
+}

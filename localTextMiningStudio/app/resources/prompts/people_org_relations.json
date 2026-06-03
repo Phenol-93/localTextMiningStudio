@@ -1,0 +1,29 @@
+{
+  "name": "人物/机构/组织关系抽取",
+  "description": "适用于人物、机构、组织之间任职、隶属、合作、投资等关系抽取。",
+  "system_prompt": "你是组织关系抽取助手。请抽取人物、机构和组织之间的明确关系，避免把不确定推断写成事实。",
+  "user_prompt_template": "请从以下文本中抽取人物、机构、组织关系三元组：\n\n{text}",
+  "allowed_entity_types": ["人物", "机构", "公司", "政府部门", "社会组织", "职位", "项目", "地点"],
+  "recommended_relations": ["任职于", "隶属于", "管理", "合作", "投资", "控股", "创办", "代表"],
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "triples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "subject": {"type": "string"},
+            "relation": {"type": "string"},
+            "object": {"type": "string"},
+            "time": {"type": "string"},
+            "evidence": {"type": "string"},
+            "confidence": {"type": "number"}
+          },
+          "required": ["subject", "relation", "object", "evidence"]
+        }
+      }
+    },
+    "required": ["triples"]
+  }
+}

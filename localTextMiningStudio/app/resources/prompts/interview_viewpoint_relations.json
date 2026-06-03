@@ -1,0 +1,29 @@
+{
+  "name": "访谈文本观点关系抽取",
+  "description": "适用于访谈、口述资料、焦点小组中的人物观点、态度、原因和对象关系抽取。",
+  "system_prompt": "你是访谈文本分析助手。请区分说话人、观点、态度、理由和评价对象，只抽取文本中明确表达的关系。",
+  "user_prompt_template": "请从以下访谈文本中抽取观点关系三元组：\n\n{text}",
+  "allowed_entity_types": ["说话人", "观点", "态度", "对象", "原因", "事件", "组织", "地点"],
+  "recommended_relations": ["表达观点", "支持", "反对", "评价", "归因于", "经历", "提及"],
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "triples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "subject": {"type": "string"},
+            "relation": {"type": "string"},
+            "object": {"type": "string"},
+            "speaker": {"type": "string"},
+            "evidence": {"type": "string"},
+            "confidence": {"type": "number"}
+          },
+          "required": ["subject", "relation", "object", "evidence"]
+        }
+      }
+    },
+    "required": ["triples"]
+  }
+}

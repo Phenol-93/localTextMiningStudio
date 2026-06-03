@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #1f2937;
+  font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px;
+  background: #ffffff;
+  border-bottom: 1px solid #d9dee8;
+}
+
+input,
+select,
+button {
+  height: 32px;
+  border: 1px solid #c8d0dc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1f2937;
+  font: inherit;
+}
+
+input,
+select {
+  padding: 0 10px;
+}
+
+button {
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eef2f7;
+}
+
+.inline-control {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  color: #4b5563;
+}
+
+#topNInput {
+  width: 72px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  min-height: 0;
+  flex: 1;
+}
+
+#cy {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+
+.details {
+  min-width: 0;
+  padding: 16px;
+  overflow: auto;
+  background: #fafbfe;
+  border-left: 1px solid #d9dee8;
+}
+
+.details h1 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.detail-row {
+  margin: 0 0 10px;
+}
+
+.detail-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.detail-value {
+  margin-top: 2px;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.summary-pill {
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #e8eef7;
+  color: #1f2937;
+  font-size: 12px;
+}

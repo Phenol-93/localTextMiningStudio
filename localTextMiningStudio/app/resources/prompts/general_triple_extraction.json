@@ -1,0 +1,30 @@
+{
+  "name": "通用三元组抽取",
+  "description": "适用于一般中文文本的实体关系三元组抽取。",
+  "system_prompt": "你是信息抽取助手。请从文本中抽取事实性实体关系三元组，避免猜测，保持实体名称简洁一致。",
+  "user_prompt_template": "请从以下文本中抽取三元组：\n\n{text}",
+  "allowed_entity_types": ["人物", "机构", "组织", "地点", "概念", "事件", "物品", "其他"],
+  "recommended_relations": ["属于", "位于", "参与", "创建", "影响", "包含", "相关"],
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "triples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "subject": {"type": "string"},
+            "relation": {"type": "string"},
+            "object": {"type": "string"},
+            "subject_type": {"type": "string"},
+            "object_type": {"type": "string"},
+            "evidence": {"type": "string"},
+            "confidence": {"type": "number"}
+          },
+          "required": ["subject", "relation", "object", "evidence"]
+        }
+      }
+    },
+    "required": ["triples"]
+  }
+}

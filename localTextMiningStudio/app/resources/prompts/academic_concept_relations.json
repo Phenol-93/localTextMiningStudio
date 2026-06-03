@@ -1,0 +1,28 @@
+{
+  "name": "学术文献概念关系抽取",
+  "description": "适用于论文、综述、研究报告中的概念、方法、指标和结论关系抽取。",
+  "system_prompt": "你是学术文本分析助手。请识别研究对象、理论概念、方法、指标、变量和结论之间的明确关系。",
+  "user_prompt_template": "请面向学术概念图谱，从文本中抽取概念关系三元组：\n\n{text}",
+  "allowed_entity_types": ["研究对象", "概念", "理论", "方法", "指标", "变量", "结论", "数据集"],
+  "recommended_relations": ["定义", "影响", "衡量", "采用方法", "验证", "比较", "支持", "反驳"],
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "triples": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "subject": {"type": "string"},
+            "relation": {"type": "string"},
+            "object": {"type": "string"},
+            "evidence": {"type": "string"},
+            "confidence": {"type": "number"}
+          },
+          "required": ["subject", "relation", "object", "evidence"]
+        }
+      }
+    },
+    "required": ["triples"]
+  }
+}
